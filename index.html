@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html ng-app>    
+
+<head>
+    <title>Premier essai avec Angular</title>
+    <meta charset="utf-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        
+</head>
+
+<body>
+
+<div ng-include src="'entete.html'"></div>
+
+<div class="container">
+    <h1>Mes animaux</h1>
+    <p>Site de recherche pour animaux perdus (où est passé mon clébard ?)</p>     
+
+    <p>
+    <label for="intro1">N° de puce</label>
+    <input type="text" class="intro" name="intro1" ng-model="numero_puce" />  
+    <a href="#" class="btn">Recherche</a>
+    </p>
+      
+    <p>
+    <label for="intro2">Race d'animal</label>
+    <input type="text" class="intro" name="intro2" />    
+    </p>
+
+    <h5>On cherche la puce {{ numero_puce }}</h5>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="span6">
+            <h2>Titre 1</h2>
+            Coucouc Contrairement à une opinion répandue, 
+            le Lorem Ipsum n'est pas simplement du texte aléatoire. 
+            Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant 
+        </div>        
+        <div class="span5">
+            <h2>Titre 2</h2>
+             On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. 
+        </div>
+    </div>        
+
+    <div class="row">
+        <div class="span11">
+            <div class="page-header">
+                <h1>Dernieres actus <small> infos des dernières 24h</small></h1>        
+                <p>
+                    <img src="http://lorempixum.com/640/200/nature">
+                </p>
+            </div>
+        </div>
+        <div class="span5">
+        </div>        
+    </div>        
+
+
+</div>
+
+   
+</body>
+
+</html>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->       
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--  <link href="css/style.css" rel="stylesheet">  -->
+	
+<script type="text/javascript">
+
+jQuery(document).ready(function() {
+  $.ajax(
+    {
+        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/', // 'http://localhost:10080/runciter/documents/ls/', // 
+        beforeSend: function ( xhr ) {
+          xhr.setRequestHeader('Accept', 'application/json');
+      }
+    }).done(function ( response ) {
+      $('#fragmentum pre#url').html(this.url); 
+      $.getJSON(
+        this.url,
+        function (data) {
+          $('#fragmentum h1').html('Fragmentumed !'); 
+          $('#fragmentum pre#result').html(JSON.stringify(data, null, 2));
+        }
+      );
+    }).fail(function ( jqXHR, textStatus, errorThrown ) {
+      $( "#fragmentum #msg" ).append( 
+          "<li>this.url = "+this.url+"</li>"+
+          "<li>jqXHR.status = "+jqXHR.status+"</li>"+
+          "<li>textStatus = "+textStatus+"</li>" +
+          "<li>errorThrown = "+errorThrown+"</li>"
+      );
+    }
+  );  
+});
+</script>
+
+	

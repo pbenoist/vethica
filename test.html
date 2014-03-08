@@ -1,0 +1,50 @@
+
+        <div id="fragmentum">
+          <h1></h1>
+          <label>URL</label>
+          <pre id="url"></pre>
+          <label>result</label>
+          <pre id="result"></pre>
+          <ol id="msg"></ol>
+        </div> <!-- /#fragmentum -->
+
+		
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--  <link href="css/style.css" rel="stylesheet">  -->
+
+<script type="text/javascript">
+
+jQuery(document).ready(function() {
+      $('#fragmentum pre#url').html(this.url); 
+      $.getJSON(
+        'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/',
+        function (data) {
+          $('#fragmentum h1').html('Fragmentumed !'); 
+          $('#fragmentum pre#result').html(JSON.stringify(data, null, 2));
+        }
+	      );	
+/*
+  $.ajax(
+    {
+        url: 'https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/documents/ls/', // 'http://localhost:10080/runciter/documents/ls/', // 
+        beforeSend: function ( xhr ) {
+          xhr.setRequestHeader('Accept', 'application/json');
+      }
+    }).done(function ( response ) {
+
+
+    }).fail(function ( jqXHR, textStatus, errorThrown ) {
+      $( "#fragmentum #msg" ).append( 
+          "<li>this.url = "+this.url+"</li>"+
+          "<li>jqXHR.status = "+jqXHR.status+"</li>"+
+          "<li>textStatus = "+textStatus+"</li>" +
+          "<li>errorThrown = "+errorThrown+"</li>"
+      );
+    }
+  );  
+	*/
+});
+</script>
