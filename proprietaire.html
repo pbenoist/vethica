@@ -14,12 +14,12 @@
 <div ng-include src="'entete.html'"></div>
 
 <div class="container">
-    <h1>Recherche d'un propriétaire d'animal</h1>
+    <h1>Création / Modification de votre animal</h1>
 
     <div class="row">
         <div class="span6">
-	<p>Si vous avez trouvé un animal, vous pouvez chercher son propriètaire en donnant ici son n° d'identification... </p>
-	<p class="todo">mettre ici un texte expliquant le role de la puce, la façon d'obtenir ce n° ...</p>
+	<p>Vous pouvez ajouter un nouvel animal, modifier vos coordonnées...  </p>
+	<p class="todo">Il est nécessaire d'être enregistré en tant que propriètaire pour arriver sur cette page</p>
 		</div>        
 	</div>        
 
@@ -27,14 +27,16 @@
     <label for="intro1">N° de puce</label>
     <input type="text" class="intro" name="intro1" ng-model="numero_puce" />  
     <a href="#" class="btn">Recherche</a>
+    <a href="#" class="btn">Ajout</a>
     </p>
 
     <h5>Puce {{ numero_puce }} </h5>
-    <h5>Propriètaire {{ prop.nom }} {{ prop.prenom }} </h5>
-    <h5>Dates vaccins ... {{ animal.date }} </h5>
-    <h5>Code génétique... {{ animal.codgen }} </h5>
+    Nom de l'animal {{ animal.nom }} <br>
+	Race {{ aniaml.race }} <br>
+	etc etc...
 	
 </div>
+
 
    
 </body>

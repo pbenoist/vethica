@@ -14,12 +14,12 @@
 <div ng-include src="'entete.html'"></div>
 
 <div class="container">
-    <h1>Recherche d'un propriétaire d'animal</h1>
+    <h1>Identification génétique</h1>
 
     <div class="row">
         <div class="span6">
-	<p>Si vous avez trouvé un animal, vous pouvez chercher son propriètaire en donnant ici son n° d'identification... </p>
-	<p class="todo">mettre ici un texte expliquant le role de la puce, la façon d'obtenir ce n° ...</p>
+	<p>Code génétique de l'animal</p>
+	<p class="todo">Il est nécessaire d'être enregistré en tant que labo pour arriver sur cette page. Les seules actions possibles sont le création ou la modification du code génétique associé au n° de serie de la puce trouvée</p>
 		</div>        
 	</div>        
 
@@ -29,12 +29,13 @@
     <a href="#" class="btn">Recherche</a>
     </p>
 
-    <h5>Puce {{ numero_puce }} </h5>
-    <h5>Propriètaire {{ prop.nom }} {{ prop.prenom }} </h5>
-    <h5>Dates vaccins ... {{ animal.date }} </h5>
-    <h5>Code génétique... {{ animal.codgen }} </h5>
+    <label for="intro2">Code génétique</label>
+    <input type="text" class="intro" name="intro2" ng-model="code_genetique" />  
+
+    <a href="#" class="btn">Enregistrement</a>
 	
 </div>
+
 
    
 </body>

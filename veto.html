@@ -1,81 +1,58 @@
 ﻿<!doctype html>
 <html ng-app>    
+
 <head>
     <title>Premier essai avec Angular</title>
     <meta charset="utf-8">
-
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->       
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
- 
-    <link href="css/style.css" rel="stylesheet">  
-        
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">       
+    <link rel="stylesheet" href="css/style.css">       
 </head>
+
 <body>
 
 <div ng-include src="'entete.html'"></div>
 
 <div class="container">
-    <h1>Espace Véto</h1>
-    <p>Site de recherche pour animaux perdus</p>   
-
-    <p>
-    <label for="intro1">N° de puce</label>
-    <input type="text" name="intro1" ng-model="numero_puce" />  
-    </p>
-      
-    <p>
-    <label for="intro2">Race d'animal</label>
-    <input type="text" name="intro2" />    
-    </p>
-
-    <h5>On cherche la puce {{ numero_puce }}</h5>
-</div>
-
-<div class="container">
+    <h1>Suivi vétérinaire</h1>
 
     <div class="row">
         <div class="span6">
-            <h2>Titre 1</h2>
-            Contrairement à une opinion répandue, 
-            le Lorem Ipsum n'est pas simplement du texte aléatoire. 
-            Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans. Un professeur du Hampden-Sydney College, en Virginie, s'est intéressé à un des mots latins les plus obscurs, consectetur, extrait d'un passage du Lorem Ipsum, et en étudiant 
-        </div>        
-        <div class="span5">
-            <h2>Titre 2</h2>
-             On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. 
-        </div>
-        <div class="span5">
-            <h2>Titre 3</h2>
-                Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée par l'addition d'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. 
-        	    paragraphes	mots	caractères	listesCommencez par "Lorem ipsum dolor sit amet..."Advertise        
-        </div>        
-    </div>        
+	<p>Code génétique de l'animal</p>
+	<p class="todo">Il est nécessaire d'être enregistré en tant que véto pour arriver sur cette page. Les seules actions possibles sont l'ajout ou la modification de prestation vétérinaires (vaccins, dates rappels ...) à partir d'une puce trouvée</p>
+		</div>        
+	</div>        
 
-    <div class="row">
-        <div class="span11">
-            <div class="page-header">
-                <h1>Dernieres actus <small> infos des dernières 24h</small></h1>        
-                <p>
-                    <img src="http://lorempixum.com/640/200/nature">
-                </p>
-            </div>
-        </div>
-        <div class="span5">
-        </div>        
-    </div>        
+    <p>
+    </p>
 
+<form>
+    <label for="intro1">N° de puce</label>
+    <input type="text" class="intro" name="intro1" ng-model="numero_puce" />  
+    <a href="#" class="btn">Recherche</a> 
+	<br>
+	
+<input type="checkbox" name="vaccin1" value="">Vaccin rage<br>
+<input type="checkbox" name="vaccin2" value="">Vaccin 2<br>
+</form> 	
+    <a href="#" class="btn">Enregistrement</a>
 
+	
 </div>
 
-    
+
+   
 </body>
+
 </html>
     
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->       
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--  <link href="css/style.css" rel="stylesheet">  -->
+	
+
+	
