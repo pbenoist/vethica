@@ -1,0 +1,25 @@
+.jumbotron
+{
+    background-image:linear-gradient(white, #00ff00);
+}
+
+.navbar
+{
+    background-image:linear-gradient(white, #00ff00);
+}
+
+input.ng-invalid {
+  border: 1px solid red;
+}
+input.ng-valid {
+  border: 1px solid green;
+}
+
+.done-true
+{
+    color:grey;
+}
+.done-false
+{
+    color:red;
+}

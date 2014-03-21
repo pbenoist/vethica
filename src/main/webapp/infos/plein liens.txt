@@ -18,3 +18,9 @@ Christophe Thiebaud 2: http://git-scm.com/downloads
 
 Christophe Thiebaud 2: https://github.com/pbenoist
 
+http://scn.sap.com/community/developer-center/cloud-platform/blog/2013/10/17/8-easy-steps-to-develop-an-xs-application-on-the-sap-hana-cloud-platform
+https://help.hana.ondemand.com/help/frameset.htm?2a795b95e44c42d08c446893a07921db.html
+
+opening database tunnel
+https://help.hana.ondemand.com/help/frameset.htm?6930850a8f9a40489c01ed1aa381946d.html
+

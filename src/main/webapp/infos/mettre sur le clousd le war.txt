@@ -1,0 +1,3 @@
+neo.bat status -h hanatrial.ondemand.com -a p1643349133trial -b root -u P1643349133
+
+Passer pwd : Sandre33
