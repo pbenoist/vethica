@@ -1,5 +1,6 @@
 .jumbotron
 {
+   background-image:linear-gradient(#9dc5ed, #278bf0);
    padding: 0.5em 0.6em;
     h1 {
         font-size: 5em;
@@ -16,20 +17,65 @@
 		padding-top: 50px;
 	}
 
-/*
-    background-image:linear-gradient(white, #00ff00);
-*/
 }
 
 .navbar
 {
-/*
-    background-image:linear-gradient(white, #00ff00);
-*/
+   background-image:linear-gradient(#9dc5ed, #278bf0);
 }
 
+h3
+{
+   background-image:linear-gradient(#9dc5ed, #278bf0);
+}
 .todo
 {
 background-color:#ffff66;
 font-style:italic;
+}
+
+.recherche
+{
+/*    padding-left:10px;*/
+    width: 350px;
+    height: 100px;
+/*    border:solid;*/
+}
+
+/*
+.recherche h3
+{
+   background-image:linear-gradient(#065AAE, #5CA4AE);
+
+}
+
+.info_animal h3
+{
+   background-image:linear-gradient(#ccccff, #0000ff);
+}
+
+.info_owner h3
+{
+   background-image:linear-gradient(#ccccff, #0000ff);
+}
+*/
+
+.info_animal
+{
+marging-left: -15px;
+}
+
+.col-md-3
+{
+marging-left: -15px;
+/*background-color:#ff0000;*/
+}
+
+.col-md-2
+{
+/*background-color:#00ff00;*/
+}
+.col-md-7
+{
+/*background-color:#9dc5ed;*/
 }

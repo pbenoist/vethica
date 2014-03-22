@@ -11,29 +11,140 @@
 
 <body>
 
-<div ng-include src="'entete.html'"></div>
+<div class="container">
+    <nav role="navigation" class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Véthica</a>
+<!--            <a href="http://vethica.com" class="navbar-brand">Véthica</a> -->
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Accueil</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>    
+
+
+<div class="container"> 
+    <div class="jumbotron">
+        <div class="row"> 
+                <h1>L'identification animale</h1>
+        </div>
+    </div>   
+</div>
+
+<div ng-controller="animal_ctrl">
 
 <div class="container">
-    <h1>Recherche d'un propriétaire d'animal</h1>
+    <div class="recherche">
+        <h3>Recherche</h3>
+            <form>
+            <label for="intro1">N° de puce</label>
+            <input type="text" class="intro" name="intro1" ng-change="change_puce()" ng-model="numero_puce" />  
+            <button class="btn-primary" ng-click="animal_search()">Recherche</button>
+            </form>
+    </div>
 
-    <div class="row">
-        <div class="span6">
-	<p>Si vous avez trouvé un animal, vous pouvez chercher son propriètaire en donnant ici son n° d'identification... </p>
-	<p class="todo">mettre ici un texte expliquant le role de la puce, la façon d'obtenir ce n° ...</p>
-		</div>        
-	</div>        
+<!--
+<div class="container">
+<div class="row">
+    <div class="col_boot">
+            <div class="col-md-3">
+                aa
+            </div>
+            <div class="col-md-2">
+                bb
+            </div>
+            <div class="col-md-7">
+                cc
+            </div>
 
-    <p>
-    <label for="intro1">N° de puce</label>
-    <input type="text" class="intro" name="intro1" ng-model="numero_puce" />  
-    <a href="#" class="btn">Recherche</a>
-    </p>
+            <div class="col-md-3">
+                lig 2 aa
+            </div>
+            <div class="col-md-2">
+                lig 2 bb
+            </div>
+            <div class="col-md-7">
+                lig 2 cc
+            </div>
+    </div>
+</div>
+</div>
+-->
 
-    <h5>Puce {{ numero_puce }} </h5>
-    <h5>Propriètaire {{ prop.nom }} {{ prop.prenom }} </h5>
-    <h5>Dates vaccins ... {{ animal.date }} </h5>
-    <h5>Code génétique... {{ animal.codgen }} </h5>
-	
+<div class="container">
+<div class="row">
+    <div class="info_animal" ng-show="show_all">
+        <h3>Animal</h3>
+
+            <div class="col-md-4">
+                <img src="img/{{animal_picture}}"></img>
+            </div>
+    
+            <div class="col-md-3">
+                Race                
+            </div>
+            <div class="col-md-5">
+              {{animal_race}}
+            </div>
+
+            <div class="col-md-3">
+                Date de naissance               
+            </div>
+            <div class="col-md-5">
+              {{animal_birthday}}
+            </div>
+
+            <div class="col-md-3">
+                Couleur dominante               
+            </div>
+            <div class="col-md-5">
+              {{animal_color}}
+            </div>
+     </div> 
+</div>
+</div>
+   
+              
+<div class="container">
+<div class="row">
+    <div class="info_owner" ng-show="show_all">
+    <h3>Propriètaire</h3>
+            <div class="col-md-1">
+                Nom                
+            </div>
+            <div class="col-md-11">
+                {{owner_name}}                
+            </div>
+            
+            <div class="col-md-1">
+                Tel                
+            </div>
+            <div class="col-md-11">
+                {{owner_tel}}                
+            </div>
+
+    </div>
+</div>
+</div>
+
+
+    
+</div>
 </div>
 
    
@@ -41,13 +152,14 @@
 
 </html>
     
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->       
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <!--  <link href="css/style.css" rel="stylesheet">  -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->       
+<script src="//code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!--  <link href="css/style.css" rel="stylesheet">  -->
+<script src="js/vethica.js"></script>
 	
 
 	
