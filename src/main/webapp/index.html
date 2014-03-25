@@ -39,11 +39,10 @@
 
 
 <div class="container"> 
-    <div class="jumbotron">
         <div class="row"> 
-                <h1>L'identification animale</h1>
+                <img src="img/theme_image_1.jpg"></img>
+            
         </div>
-    </div>   
 </div>
 
 <div ng-controller="animal_ctrl">
@@ -54,7 +53,7 @@
             <form>
             <label for="intro1">N° de puce</label>
             <input type="text" class="intro" name="intro1" ng-change="change_puce()" ng-model="numero_puce" />  
-            <button class="btn-primary" ng-click="animal_search()">Recherche</button>
+            <button class="btn btn-link"  ng-click="animal_search()">Recherche</button>
             </form>
     </div>
 
@@ -91,30 +90,37 @@
     <div class="info_animal" ng-show="show_all">
         <h3>Animal</h3>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <div class="picture"> 
                 <img src="img/{{animal_picture}}"></img>
+                </div> 
             </div>
     
-            <div class="col-md-3">
+            <div class="col-md-2">
                 Race                
             </div>
             <div class="col-md-5">
-              {{animal_race}}
+            <input type="text" class="{{animal_class_intro}}" ng-readonly="animal_mode()" ng-model="animal_race" />  
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-1">
+            <button type="button" class="btn btn-link"  ng-click="animal_modif()">{{animal_modif_button_txt}}</button>
+            </div>
+
+            <div class="col-md-2">
                 Date de naissance               
             </div>
-            <div class="col-md-5">
-              {{animal_birthday}}
+            <div class="col-md-6">
+            <input type="date" class="{{animal_class_intro}}" ng-readonly="animal_mode()" ng-model="animal_birthday" />  
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 Couleur dominante               
             </div>
-            <div class="col-md-5">
-              {{animal_color}}
+            <div class="col-md-6">
+            <input type="text" class="{{animal_class_intro}}" ng-readonly="animal_mode()" ng-model="animal_color" />  
             </div>
+
      </div> 
 </div>
 </div>
@@ -124,28 +130,73 @@
 <div class="row">
     <div class="info_owner" ng-show="show_all">
     <h3>Propriètaire</h3>
-            <div class="col-md-1">
+
+            <div class="col-md-3">
+                <div class="picture"> 
+                    <img src="img/{{owner_picture}}"></img>
+                </div> 
+            </div>
+
+            <div class="col-md-2">
                 Nom                
             </div>
-            <div class="col-md-11">
-                {{owner_name}}                
+            
+            <div class="col-md-5">
+            <input type="text" class="{{owner_class_intro}}" ng-readonly="owner_mode()" ng-model="owner_name" />  
+            </div>
+
+            <div class="col-md-1">
+            <button type="button" class="btn btn-link"  ng-click="owner_modif()">{{owner_modif_button_txt}}</button>
             </div>
             
-            <div class="col-md-1">
+            <div class="col-md-2">
                 Tel                
             </div>
-            <div class="col-md-11">
-                {{owner_tel}}                
+            <div class="col-md-6">
+            <input type="text" class="{{owner_class_intro}}" ng-readonly="owner_mode()" ng-model="owner_tel" />  
             </div>
+
+
 
     </div>
 </div>
 </div>
 
 
+<div class="container" ng-controller="vet_action_ctrl">
+<div class="row">
+    <div class="info_owner" ng-show="show_all">
+    <h3>Vétérinaire</h3>
+
+    <br>{{montest}}<br>
+    
+            <div class="col-md-3">
+                <div class="picture"> 
+                    <img src="img/{{owner_picture}}" width=100%></img>
+                </div> 
+            </div>
+
+        <li ng-repeat="vet_action in vet_actions">
+            <div class="col-md-2">
+                {{vet_action.lib_action}}
+            </div>
+            
+            <div class="col-md-5">
+                {{vet_action.date_action}}
+            </div>        
+        </li>   
+    
+    <form class="form-horinzontal">
+        <input type="text" ng-model="vet_action_form" ng-model-instant>
+    <button class="btn btn-link"  ng-click="vet_action_add()">Ajout action</button> 
+
+    </form>    
+    </div>
+    
     
 </div>
-</div>
+</div>    
+
 
    
 </body>

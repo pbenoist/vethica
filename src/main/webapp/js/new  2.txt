@@ -1,5 +1,0 @@
-<Context
-   docBase="c:/Apps/vethica"
-   path=""
-   reloadable="true"
-/>
