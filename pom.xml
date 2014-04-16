@@ -36,7 +36,7 @@
                 <executions>
                     <execution>
                         <id>after.install</id>
-                        <phase>install</phase>
+                        <phase/>
                         <goals>
                             <goal>stop</goal>
                             <goal>deploy</goal>
