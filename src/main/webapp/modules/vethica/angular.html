@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +25,7 @@
   <div ng-controller="BuildController">
     <ul ng-cloak>       
       <li ng-repeat="build in builds">
-        <label>id</label>  <span >{{build.Id}}</span>
-        <label>gav</label> <span >{{build.Gav}}</span>
+        <label>id</label> : '<span >{{build.Id}}</span>' | <label>gav</label> : '<span >{{build.Gav}}</span>'
       </li>
     </ul>
   </div>
@@ -52,7 +53,5 @@ function BuildController($scope, $data) {
     $scope.builds = buildhub.Builds.toLiveArray();
   });
 }
-
-/* config.CORS */
 
 </script>

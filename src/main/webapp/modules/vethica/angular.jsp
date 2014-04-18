@@ -21,11 +21,11 @@
   </style>
 </head>
 <body data-ng-app="buildhubApp">
+  <h1>buildhub + angular + odata</h1>
   <div ng-controller="BuildController">
     <ul ng-cloak>       
       <li ng-repeat="build in builds">
-        <label>id</label>  <span >{{build.Id}}</span>
-        <label>gav</label> <span >{{build.Gav}}</span>
+        <label>id</label> : '<span >{{build.Id}}</span>' | <label>gav</label> : '<span >{{build.Gav}}</span>'
       </li>
     </ul>
   </div>
@@ -41,16 +41,16 @@
 
 <script type="text/javascript">
 
+jQuery.support.cors = true;
+
 var buildhub = angular.module('buildhubApp', ['jaydata']);
 
 function BuildController($scope, $data) {
   $scope.builds = [];
 
-  $data.initService('/runciter/BuildHub.svc', function (factory) {
-    }, { httpHeaders: { 'Access-Control-Allow-Origin': 'GET' } }
-  )
-  .then(function (buildhub_odata) {
-    $scope.builds = buildhub_odata.BuildS.toLiveArray();
+  $data.initService('<c:url value="/BuildHub.svc" />')
+  .then(function (buildhub) {
+    $scope.builds = buildhub.Builds.toLiveArray();
   });
 }
 
