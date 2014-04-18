@@ -48,7 +48,8 @@ var buildhub = angular.module('buildhubApp', ['jaydata']);
 function BuildController($scope, $data) {
   $scope.builds = [];
 
-  $data.initService('<c:url value="/BuildHub.svc" />')
+  /* $data.initService('<c:url value="/BuildHub.svc" />') */
+  $data.initService('/runciter/BuildHub.svc')
   .then(function (buildhub) {
     $scope.builds = buildhub.Builds.toLiveArray();
   });
