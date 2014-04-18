@@ -2,7 +2,7 @@
 
 ## De la part de Christophe :
  
-Je fais un changement dans ton site rien que pour voir si tu t'en aperçois! 
+Je fais un changement dans ton github rien que pour voir si tu t'en aperçois! 
 
 ## La bataille des dix mots
 
