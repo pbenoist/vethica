@@ -32,11 +32,12 @@
 </body>
 </html>
 
-<script src="http://code.jquery.com/jquery-2.1.0.js"></script>
-<script src="http://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+
 <script src="datajs-1.1.2.js"></script>
-<script src="http://include.jaydata.org/jaydata.js"></script>
-<script src="http://include.jaydata.org/jaydatamodules/angular.js"></script>
+<script src="jaydata.js"></script>
+<script src="jaydatamodules/angular.js"></script>
 
 <script type="text/javascript">
 
