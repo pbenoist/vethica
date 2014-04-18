@@ -1,6 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"
-%><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" 
-%><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -21,6 +19,7 @@
   </style>
 </head>
 <body data-ng-app="buildhubApp">
+  <h1>buildhub + angular + odata</h1>
   <div ng-controller="BuildController">
     <ul ng-cloak>       
       <li ng-repeat="build in builds">
@@ -41,17 +40,19 @@
 
 <script type="text/javascript">
 
+jQuery.support.cors = true;
+
 var buildhub = angular.module('buildhubApp', ['jaydata']);
 
 function BuildController($scope, $data) {
   $scope.builds = [];
 
-  $data.initService('/runciter/BuildHub.svc', function (factory) {
-    }, { httpHeaders: { 'Access-Control-Allow-Origin': 'GET' } }
-  )
-  .then(function (buildhub_odata) {
-    $scope.builds = buildhub_odata.BuildS.toLiveArray();
+  $data.initService('https://tcbp1630844092trial.hanatrial.ondemand.com/runciter/BuildHub.svc')
+  .then(function (buildhub) {
+    $scope.builds = buildhub.Builds.toLiveArray();
   });
 }
+
+/* config.CORS */
 
 </script>
