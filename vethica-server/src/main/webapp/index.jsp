@@ -24,7 +24,8 @@
   <div ng-controller="ProprioEditorController">
     <ul ng-cloak>       
       <li ng-repeat="proprio in proprios">
-        <label>nom</label>    <span >{{proprio.Nom}}</span>
+        <p><label>nom</label> : <span >{{proprio.Nom}}</span></p>
+        <p><label>prenom</label> : <span >{{proprio.Prenom}}</span></p>
       </li>
     </ul>
   </div>
@@ -32,7 +33,7 @@
 </html>
 
 <script src="http://code.jquery.com/jquery-2.1.0.js"></script>
-<script src="http://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
+<script src="http://code.angularjs.org/1.3.0-beta.6/angular.js"></script>
 <script src="datajs-1.1.2.js"></script>
 <script src="http://include.jaydata.org/jaydata.js"></script>
 <script src="http://include.jaydata.org/jaydatamodules/angular.js"></script>
@@ -46,7 +47,7 @@ function ProprioEditorController($scope, $data) {
 
   $data.initService('<c:url value="/Vethica.svc"/>')
   .then(function (vethica) {
-    $scope.proprios = vethica.Proprios.toLiveArray();
+    $scope.proprios = vethica.proprios.toLiveArray();
   });
 }
 
