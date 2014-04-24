@@ -68,14 +68,17 @@ public class VethicaServiceFactory extends ODataJPAServiceFactory {
         driver.setCar(car);
 
         */
-        Proprio proprio = new Proprio();
-        proprio.setNom("ceci est mon nom");
-        proprio.setPrenom("ceci est mon prénom");
-        EntityManager em = Persistence.createEntityManagerFactory(PUNIT_NAME).createEntityManager();
-        em.getTransaction().begin();
-        em.persist(proprio);
-        em.getTransaction().commit();
-
+        try {
+            Proprio proprio = new Proprio();
+            proprio.setNom("ceci est mon nom");
+            proprio.setPrenom("ceci est mon prénom");
+            EntityManager em = Persistence.createEntityManagerFactory(PUNIT_NAME).createEntityManager();
+            em.getTransaction().begin();
+            em.persist(proprio);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
