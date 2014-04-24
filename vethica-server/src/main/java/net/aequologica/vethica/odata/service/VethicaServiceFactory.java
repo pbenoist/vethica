@@ -18,7 +18,10 @@
  ******************************************************************************/
 package net.aequologica.vethica.odata.service;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+
+import net.aequologica.vethica.odata.model.Proprio;
 
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAServiceFactory;
@@ -30,8 +33,9 @@ public class VethicaServiceFactory extends ODataJPAServiceFactory {
     private static final int    PAGE_SIZE  = 12;
 
     /** Load Sample Data 
+    **/
     static {
-
+        /*
         List<Car> cars1 = new ArrayList<Car>();
         List<Car> cars2 = new ArrayList<Car>();
         List<Car> cars3 = new ArrayList<Car>();
@@ -63,17 +67,16 @@ public class VethicaServiceFactory extends ODataJPAServiceFactory {
         cars1.add(car);
         driver.setCar(car);
 
+        */
+        Proprio proprio = new Proprio();
+        proprio.setNom("ceci est mon nom");
+        proprio.setPrenom("ceci est mon prénom");
         EntityManager em = Persistence.createEntityManagerFactory(PUNIT_NAME).createEntityManager();
         em.getTransaction().begin();
-        em.persist(mf1);
-        em.persist(mf2);
-        em.persist(mf3);
-        em.persist(driver);
-        em.persist(car);
+        em.persist(proprio);
         em.getTransaction().commit();
 
     }
-    **/
 
     @Override
     public ODataJPAContext initializeODataJPAContext() throws ODataJPARuntimeException {
