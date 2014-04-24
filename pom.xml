@@ -6,11 +6,15 @@
     <artifactId>vethica</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
-    <name>vethica</name>
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId}</description>
 
-    <description></description>
+    <modules>
+        <module>vethica-client</module>
+        <module>vethica-server</module>
+    </modules>
 
     <build>
         <plugins>
@@ -29,21 +33,21 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <!-- cf. http://stackoverflow.com/questions/283489/is-there-a-way-to-hide-maven-2-target-folder-in-eclipse-3 -->
             <plugin>
-                <groupId>com.sap.research</groupId>
-                <artifactId>nwcloud-maven-plugin</artifactId>
-                <version>1.0.4-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <id>after.install</id>
-                        <phase/>
-                        <goals>
-                            <goal>stop</goal>
-                            <goal>deploy</goal>
-                            <goal>start</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                    <filesets>
+                        <!-- delete target folder contents, but not target folder itself -->
+                        <fileset>
+                            <directory>target</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
         </plugins>
     </build>
