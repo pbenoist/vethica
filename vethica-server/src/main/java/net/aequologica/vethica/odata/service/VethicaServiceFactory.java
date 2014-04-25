@@ -18,10 +18,7 @@
  ******************************************************************************/
 package net.aequologica.vethica.odata.service;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-
-import net.aequologica.vethica.odata.model.Proprio;
 
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAServiceFactory;
@@ -29,57 +26,8 @@ import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeExcep
 
 public class VethicaServiceFactory extends ODataJPAServiceFactory {
 
-    private static final String PUNIT_NAME = "Vethica";
+    /*   */ static final String PUNIT_NAME = "Vethica";
     private static final int    PAGE_SIZE  = 12;
-
-    /** Load Sample Data 
-    **/
-    static {
-        /*
-        List<Car> cars1 = new ArrayList<Car>();
-        List<Car> cars2 = new ArrayList<Car>();
-        List<Car> cars3 = new ArrayList<Car>();
-        Calendar mfDate1 = Calendar.getInstance();
-        Calendar mfDate2 = Calendar.getInstance();
-        Calendar mfDate3 = Calendar.getInstance();
-        mfDate1.clear();
-        mfDate2.clear();
-        mfDate3.clear();
-        mfDate1.set(2010, 1, 2, 3, 4, 5);
-        mfDate2.set(2011, 2, 3, 4, 5, 6);
-        mfDate3.set(2012, 3, 4, 5, 6, 7);
-        Address address1 = new Address("S1", "C1", "Z1", "CN");
-        Address address2 = new Address("S2", "C2", "Z2", "CN");
-        Address address3 = new Address("S3", "C3", "Z3", "CN");
-
-        Manufacturer mf1 = new Manufacturer(1, "SuperCar1", mfDate1, address1, cars1);
-        Manufacturer mf2 = new Manufacturer(2, "SuperCar2", mfDate2, address2, cars2);
-        Manufacturer mf3 = new Manufacturer(3, "SuperCar3", mfDate3, address3, cars3);
-
-        Calendar bDate = Calendar.getInstance();
-        bDate.set(1980, 02, 19);
-        Driver driver = new Driver(1L, "Speeder", "Super", "Bolt", null, bDate);
-
-        Key key = new Key(1, 2);
-        Calendar carDate = Calendar.getInstance();
-        carDate.set(2014, 02, 20);
-        Car car = new Car(key, "M1", 20000.0, 2014, carDate.getTime(), mf1, driver);
-        cars1.add(car);
-        driver.setCar(car);
-
-        */
-        try {
-            Proprio proprio = new Proprio();
-            proprio.setNom("ceci est mon nom");
-            proprio.setPrenom("ceci est mon prénom");
-            EntityManager em = Persistence.createEntityManagerFactory(PUNIT_NAME).createEntityManager();
-            em.getTransaction().begin();
-            em.persist(proprio);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public ODataJPAContext initializeODataJPAContext() throws ODataJPARuntimeException {
