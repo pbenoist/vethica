@@ -17,6 +17,11 @@ public class Veto {
         private String nom;
         @Column(length=10, name="nu_ordre")
         private String nuOrdre;
+        @Column(length=80)
+        private String ville;
+        @Column(length=10)
+        private String codpost;
+
         public Long getId() {
             return id;
         }
@@ -28,6 +33,18 @@ public class Veto {
         }
         public void setNom(String nom) {
             this.nom = nom;
+        }
+        public String getVille() {
+            return ville;
+        }
+        public void setVille(String ville) {
+            this.nom = ville;
+        }
+        public String getCodpost() {
+            return codpost;
+        }
+        public void setCodpost(String ville) {
+            this.nom = codpost;
         }
         public String getNuOrdre() {
             return nuOrdre;

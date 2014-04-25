@@ -7,20 +7,21 @@
         <class>net.aequologica.vethica.odata.model.Proprio</class>
         <class>net.aequologica.vethica.odata.model.Veto</class>
         <properties>
-        <!-- BEGIN MYSQL 
+        <!-- BEGIN MYSQL -->
             <property name="javax.persistence.jdbc.driver"           value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url"              value="jdbc:mysql://localhost/test" />
+            <property name="javax.persistence.jdbc.url"              value="jdbc:mysql://localhost:3306/vethica" />
             <property name="javax.persistence.jdbc.user"             value="root" />
             <property name="javax.persistence.jdbc.password"         value="" />
             <property name="eclipselink.target-database"             value="org.eclipse.persistence.platform.database.MySQLPlatform" />
-             END MYSQL -->
-        <!-- BEGIN HSQL -->
+        <!-- END MYSQL -->
+        <!-- BEGIN HSQL 
             <property name="javax.persistence.jdbc.driver"           value="org.hsqldb.jdbcDriver" />
             <property name="javax.persistence.jdbc.url"              value="jdbc:hsqldb:mem:org.apache.olingo.jpa.sample" />
             <property name="javax.persistence.jdbc.user"             value="sa" />
             <property name="javax.persistence.jdbc.password"         value="" />
             <property name="eclipselink.target-database"             value="org.eclipse.persistence.platform.database.HSQLPlatform" />
-        <!-- END HSQL -->
+        -->
+		<!-- END HSQL -->
         <!-- BEGIN common -->
             <property name="eclipselink.logging.level"               value="ALL" />
             <property name="eclipselink.orm.throw.exceptions"        value="true" />

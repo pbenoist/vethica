@@ -23,11 +23,46 @@
 <body data-ng-app="app">
   <div ng-controller="ProprioEditorController">
     <ul ng-cloak>       
+	<h2>Proprio !!!s</h2>
       <li ng-repeat="proprio in proprios">
-        <p><label>nom</label> : <span >{{proprio.Nom}}</span></p>
-        <p><label>prenom</label> : <span >{{proprio.Prenom}}</span></p>
-      </li>
+	  <p>
+        <label>Id</label> : <span >{{proprio.Id}}</span>
+        <label>nom</label> : <span >{{proprio.Nom}}</span>
+        <label>prenom</label> : <span >{{proprio.Prenom}}</span>
+		<button ng-click="remove(proprio)">Remove</button>		
+      </p>
+	  </li>
+  
+	<h2>Vétos</h2>
+	<li ng-repeat="veto in vetos">
+        <p><label>Id</label> : <span >{{veto.Id}}</span>
+        <label>N°</label> : <span >{{veto.NuOrdre}}</span>
+        <label>nom</label> : <span >{{veto.Nom}}</span>
+        <label>Ville</label> : <span >{{veto.Ville}}</span></p>
+        <label>Code postal</label> : <span >{{veto.Codpost}}</span></p>
+     </li>
+    	  
     </ul>
+
+<form ng-if="selectedProprio">
+  <fieldset>
+    <legend>{{selectedProprio.Nom}}</legend>
+    <label><span>ID:</span><span>{{selectedProprio.Id}}</span></label>
+    <label><span>Nom</span><input ng-model="selectedProprio.Nom" /></label>
+    <label><span>Prenom</span><input ng-model="selectedProprio.Prenom" /></label>
+    <button ng-click="save()">Save</button>
+  </fieldset>
+</form>
+
+	
+  <div ng-controller="ProprioSearchController">
+		<input type="text" ng-model="proprio_id" />  
+		<button ng-click="getProprio()">Cherche</button>{{result_button}}
+		<p><label>nom trouvé </label> : <span >{{proprio.Nom}}</span></p>
+        <p><label>prenom trouvé </label> : <span >{{proprio.Prenom}}</span></p>
+  </div>
+	
+	
   </div>
 </body>
 </html>
@@ -42,13 +77,57 @@
 
 var app = angular.module('app', ['jaydata']);
 
-function ProprioEditorController($scope, $data) {
+
+app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($scope, $data, $log) {
   $scope.proprios = [];
 
-  $data.initService('<c:url value="/Vethica.svc"/>')
-  .then(function (vethica) {
-    $scope.proprios = vethica.proprios.toLiveArray();
-  });
-}
+  $data.initService('Vethica.svc')
+  .then(function (result) {
+    $scope.result = result;
+    $scope.proprios = result.proprios.toLiveArray();
+    $scope.vetos = result.vetos.toLiveArray();
+  })  ;
+
+  $scope.remove = function (curproprio) {
+		$log.log("dans le remove");
+		$scope.result.proprios.remove(curproprio);
+		$scope.saveChanges();
+	};	
+  
+  }]) ;
+  
+app.controller('ProprioSearchController', ['$scope', '$data', '$log', function($scope, $data, $log) {
+	$log.log("into ProprioSearchController");
+	$scope.proprio = [];
+
+   $scope.getProprio = function () {
+	$log.log("getTheProprio");
+	$scope.result_button = "click";
+
+    $scope.proprios = result_context.proprios.toLiveArray();
+	
+/*
+		$data.initService("Vethica.svc/proprios(Id=4)")
+	$data.initService("Vethica.svc")
+	.then(function (vethica) {
+		$scope.proprio = vethica.proprio;
+		$scope.result_button = "click sucess";
+  })
+  		$log.log("plantage !");
+*/		
+		
+
+		
+  }}]);
+  
+
+/*
+  .fail(function (reason) {
+		$log.log("plantage !");
+	)}
+*/
+
+  
+	
 
 </script>
