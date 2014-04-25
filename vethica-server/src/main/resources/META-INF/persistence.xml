@@ -9,7 +9,7 @@
         <properties>
         <!-- BEGIN MYSQL -->
             <property name="javax.persistence.jdbc.driver"           value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url"              value="jdbc:mysql://localhost:3306/vethica" />
+            <property name="javax.persistence.jdbc.url"              value="jdbc:mysql://localhost:3306/vethica?createDatabaseIfNotExist=true" />
             <property name="javax.persistence.jdbc.user"             value="root" />
             <property name="javax.persistence.jdbc.password"         value="" />
             <property name="eclipselink.target-database"             value="org.eclipse.persistence.platform.database.MySQLPlatform" />
