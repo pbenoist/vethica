@@ -44,6 +44,8 @@
     	  
     </ul>
 
+<!--	
+	
 <form ng-if="selectedProprio">
   <fieldset>
     <legend>{{selectedProprio.Nom}}</legend>
@@ -54,14 +56,13 @@
   </fieldset>
 </form>
 
-	
   <div ng-controller="ProprioSearchController">
 		<input type="text" ng-model="proprio_id" />  
 		<button ng-click="getProprio()">Cherche</button>{{result_button}}
 		<p><label>nom trouvé </label> : <span >{{proprio.Nom}}</span></p>
         <p><label>prenom trouvé </label> : <span >{{proprio.Prenom}}</span></p>
   </div>
-	
+-->	
 	
   </div>
 </body>
@@ -76,7 +77,6 @@
 <script type="text/javascript">
 
 var app = angular.module('app', ['jaydata']);
-
 
 app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($scope, $data, $log) {
   $scope.proprios = [];
@@ -94,38 +94,16 @@ app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($
 		$scope.saveChanges();
 	};	
   
+  $scope.saveChanges = function () {
+    $scope.result.saveChanges()
+    .then(function () {
+      $scope.selectedProduct = null;
+    },function() {
+      $scope.result.stateManager.reset();
+    });
+  };  
   }]) ;
-  
-app.controller('ProprioSearchController', ['$scope', '$data', '$log', function($scope, $data, $log) {
-	$log.log("into ProprioSearchController");
-	$scope.proprio = [];
 
-   $scope.getProprio = function () {
-	$log.log("getTheProprio");
-	$scope.result_button = "click";
-
-    $scope.proprios = result_context.proprios.toLiveArray();
-	
-/*
-		$data.initService("Vethica.svc/proprios(Id=4)")
-	$data.initService("Vethica.svc")
-	.then(function (vethica) {
-		$scope.proprio = vethica.proprio;
-		$scope.result_button = "click sucess";
-  })
-  		$log.log("plantage !");
-*/		
-		
-
-		
-  }}]);
-  
-
-/*
-  .fail(function (reason) {
-		$log.log("plantage !");
-	)}
-*/
 
   
 	
