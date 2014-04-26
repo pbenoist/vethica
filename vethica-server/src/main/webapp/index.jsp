@@ -22,17 +22,59 @@
 </head>
 <body data-ng-app="app">
   <div ng-controller="ProprioEditorController">
-    <ul ng-cloak>       
-	<h2>Proprio !!!s</h2>
-      <li ng-repeat="proprio in proprios">
+  <ul ng-cloak>       
+	
+	<h2>Proprios</h2>
+	<button ng-model="proprio_list" ng-click="fn_proprio_list()">Liste</button>		
+	<button ng-model="proprio_add"  ng-click="fn_proprio_add()">Ajout</button>		
+	
+	<div ng-show=proprio_list>
+    <li ng-repeat="proprio in proprios">
 	  <p>
-        <label>Id</label> : <span >{{proprio.Id}}</span>
-        <label>nom</label> : <span >{{proprio.Nom}}</span>
-        <label>prenom</label> : <span >{{proprio.Prenom}}</span>
-		<button ng-click="remove(proprio)">Remove</button>		
-      </p>
+      <label>Id</label> : <span >{{proprio.Id}}</span>
+      <label>nom</label> : <span >{{proprio.Nom}}</span>
+      <label>prenom</label> : <span >{{proprio.Prenom}}</span>
+			<button ng-click="fn_proprio_remove(proprio)">Remove</button>		
+    </p>
 	  </li>
-  
+	</div>
+	
+  </ul>
+	
+
+	<form ng-show="proprio_add">
+  <fieldset>
+    <label><span>Nom</span><input ng-model="fieldProprioNom" /></label>
+    <label><span>Prenom</span><input ng-model="fieldProprioPrenom" /></label>
+    <button ng-click="fn_proprio_save()">Save</button>
+  </fieldset>
+</form>
+
+<!--<form ng-if="proprio_add"> 
+
+L'utilisation de ng-if fait que le scope ne connait pas les ng-model
+il est donc préférable de faire ng-hide mais attention, il faut modifier le css
+
+.ng-hide {
+//!annotate CSS Specificity|Not to worry, this will override the AngularJS default...
+  display:block!important;
+ 
+  //this is just another form of hiding an element
+  position:absolute;
+  top:-9999px;
+  left:-9999px;
+}
+-->
+
+<!--	
+  <div ng-controller="ProprioSearchController">
+		<input type="text" ng-model="proprio_id" />  
+		<button ng-click="getProprio()">Cherche</button>{{result_button}}
+		<p><label>nom trouvé </label> : <span >{{proprio.Nom}}</span></p>
+        <p><label>prenom trouvé </label> : <span >{{proprio.Prenom}}</span></p>
+  </div>
+
+
 	<h2>Vétos</h2>
 	<li ng-repeat="veto in vetos">
         <p><label>Id</label> : <span >{{veto.Id}}</span>
@@ -41,28 +83,7 @@
         <label>Ville</label> : <span >{{veto.Ville}}</span></p>
         <label>Code postal</label> : <span >{{veto.Codpost}}</span></p>
      </li>
-    	  
-    </ul>
-
-<!--	
-	
-<form ng-if="selectedProprio">
-  <fieldset>
-    <legend>{{selectedProprio.Nom}}</legend>
-    <label><span>ID:</span><span>{{selectedProprio.Id}}</span></label>
-    <label><span>Nom</span><input ng-model="selectedProprio.Nom" /></label>
-    <label><span>Prenom</span><input ng-model="selectedProprio.Prenom" /></label>
-    <button ng-click="save()">Save</button>
-  </fieldset>
-</form>
-
-  <div ng-controller="ProprioSearchController">
-		<input type="text" ng-model="proprio_id" />  
-		<button ng-click="getProprio()">Cherche</button>{{result_button}}
-		<p><label>nom trouvé </label> : <span >{{proprio.Nom}}</span></p>
-        <p><label>prenom trouvé </label> : <span >{{proprio.Prenom}}</span></p>
-  </div>
--->	
+-->	    	  
 	
   </div>
 </body>
@@ -79,27 +100,60 @@
 var app = angular.module('app', ['jaydata']);
 
 app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($scope, $data, $log) {
-  $scope.proprios = [];
+  var DB;
 
+	$log.log("init variables");
+	$scope.proprio_list = false;
+	$scope.proprio_add  = false;
+	$scope.proprios = [];
+	$scope.vetos    = [];
+	
   $data.initService('Vethica.svc')
   .then(function (result) {
-    $scope.result = result;
-    $scope.proprios = result.proprios.toLiveArray();
-    $scope.vetos = result.vetos.toLiveArray();
-  })  ;
+		$log.log("init service ok");
+    DB = result;
+  });
 
-  $scope.remove = function (curproprio) {
+  $scope.fn_proprio_list = function () {
+  	$scope.proprio_list = true;
+		$scope.proprio_add  = false;
+		$log.log("demande de liste");
+    $scope.proprios = DB.proprios.toLiveArray();
+	};	
+
+  $scope.fn_proprio_add = function () {
+  	$scope.proprio_list = false;
+  	$scope.proprio_add = true;
+		$log.log("Ouverture form add de proprio");
+	};	
+	
+  $scope.fn_proprio_save = function () {
+		var newProp = new DB.proprios.proprio( );
+	  newProp.Nom = $scope.fieldProprioNom;
+	  newProp.Prenom = $scope.fieldProprioPrenom;
+		DB.proprios.add(newProp);
+//    DB.saveChanges();
+		
+		$scope.saveChanges();	
+  	$scope.proprio_list = false;
+  	$scope.proprio_add = false;
+		$log.log("Save de proprio");
+	};	
+	
+	
+  $scope.fn_proprio_remove = function (curproprio) {
 		$log.log("dans le remove");
-		$scope.result.proprios.remove(curproprio);
+		DB.proprios.remove(curproprio);
 		$scope.saveChanges();
 	};	
   
   $scope.saveChanges = function () {
-    $scope.result.saveChanges()
+		$log.log("dans saveChanges");
+    DB.saveChanges()
     .then(function () {
       $scope.selectedProduct = null;
     },function() {
-      $scope.result.stateManager.reset();
+      DB.stateManager.reset();
     });
   };  
   }]) ;
