@@ -27,6 +27,8 @@
 	<h2>Proprios</h2>
 	<button ng-model="proprio_list" ng-click="fn_proprio_list()">Liste</button>		
 	<button ng-model="proprio_add"  ng-click="fn_proprio_add()">Ajout</button>		
+	<input type="text" ng-model="proprio_id" />  
+	<button ng-click="fn_proprio_get()">Cherche</button>
 	
 	<div ng-show=proprio_list>
     <li ng-repeat="proprio in proprios">
@@ -49,41 +51,6 @@
     <button ng-click="fn_proprio_save()">Save</button>
   </fieldset>
 </form>
-
-<!--<form ng-if="proprio_add"> 
-
-L'utilisation de ng-if fait que le scope ne connait pas les ng-model
-il est donc préférable de faire ng-hide mais attention, il faut modifier le css
-
-.ng-hide {
-//!annotate CSS Specificity|Not to worry, this will override the AngularJS default...
-  display:block!important;
- 
-  //this is just another form of hiding an element
-  position:absolute;
-  top:-9999px;
-  left:-9999px;
-}
--->
-
-<!--	
-  <div ng-controller="ProprioSearchController">
-		<input type="text" ng-model="proprio_id" />  
-		<button ng-click="getProprio()">Cherche</button>{{result_button}}
-		<p><label>nom trouvé </label> : <span >{{proprio.Nom}}</span></p>
-        <p><label>prenom trouvé </label> : <span >{{proprio.Prenom}}</span></p>
-  </div>
-
-
-	<h2>Vétos</h2>
-	<li ng-repeat="veto in vetos">
-        <p><label>Id</label> : <span >{{veto.Id}}</span>
-        <label>N°</label> : <span >{{veto.NuOrdre}}</span>
-        <label>nom</label> : <span >{{veto.Nom}}</span>
-        <label>Ville</label> : <span >{{veto.Ville}}</span></p>
-        <label>Code postal</label> : <span >{{veto.Codpost}}</span></p>
-     </li>
--->	    	  
 	
   </div>
 </body>
@@ -101,8 +68,8 @@ var app = angular.module('app', ['jaydata']);
 
 app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($scope, $data, $log) {
   var DB;
-
 	$log.log("init variables");
+
 	$scope.proprio_list = false;
 	$scope.proprio_add  = false;
 	$scope.proprios = [];
@@ -120,7 +87,13 @@ app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($
 		$log.log("demande de liste");
     $scope.proprios = DB.proprios.toLiveArray();
 	};	
-
+			
+	$scope.fn_proprio_get = function (){
+		$scope.proprios = DB.proprios.filter( function (prop) {
+			return prop.Id == this.Id;} , { Id: $scope.proprio_id}).toLiveArray();
+  	$scope.proprio_list = true;
+	}	
+	
   $scope.fn_proprio_add = function () {
   	$scope.proprio_list = false;
   	$scope.proprio_add = true;
