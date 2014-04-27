@@ -65,12 +65,10 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
-            <version>${version.eclipselink}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
-            <version>${version.javax.persistence}</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -82,14 +80,12 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
         <!-- jstl -->
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.servlet.jsp.jstl</artifactId>
-            <version>1.2.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.servlet</groupId>
@@ -102,7 +98,6 @@
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -110,25 +105,23 @@
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
-            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
-            <version>2.7</version>
         </dependency>
-        
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.1.0.Final</version>
-			<scope>provided</scope>
-		</dependency>		
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.0.Final</version>
+            <scope>provided</scope>
+        </dependency>		
+
         <!-- get jackson 
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
