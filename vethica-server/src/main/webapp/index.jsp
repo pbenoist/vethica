@@ -28,7 +28,7 @@
 	<button ng-model="proprio_list" ng-click="fn_proprio_list()">Liste</button>		
 	<button ng-model="proprio_add"  ng-click="fn_proprio_add()">Ajout</button>		
 	<input type="text" ng-model="proprio_id" />  
-	<button ng-click="fn_proprio_get()">Cherche</button>
+	<button ng-click="fn_proprio_get()">Cherche</button>{{result_search}}
 	
 	<div ng-show=proprio_list>
     <li ng-repeat="proprio in proprios">
@@ -88,11 +88,44 @@ app.controller('ProprioEditorController', ['$scope', '$data', '$log', function($
     $scope.proprios = DB.proprios.toLiveArray();
 	};	
 			
+/*
 	$scope.fn_proprio_get = function (){
 		$scope.proprios = DB.proprios.filter( function (prop) {
-			return prop.Id == this.Id;} , { Id: $scope.proprio_id}).toLiveArray();
-  	$scope.proprio_list = true;
+			return prop.Id == this.Id;} , { Id: $scope.proprio_id}).toLiveArray() ;
 	}	
+*/
+
+	$scope.fn_proprio_get = function (){
+		$scope.proprios = [];
+//		$scope.proprios = DB.proprios.filter( function (prop) {return prop.Id == this.Id;} , { Id: $scope.proprio_id}).toArray(
+		DB.proprios.filter( function (prop) {return prop.Id == this.Id;} , { Id: $scope.proprio_id}).toArray(
+		{
+                success: function (items) {
+								if (items.length == 0)
+								{
+									$scope.result_search = "Raté";
+										$scope.$apply();
+								}
+								else
+								{
+										$scope.result_search = "Success";
+                    $log.log("items received:", items.length);
+										$scope.proprios.push(items[0]);
+										$scope.proprio_list = true;
+                    $log.log(items);
+										$scope.$apply();
+								}
+								
+                },
+                error: function (err) {
+										$scope.result_search = "Raté";
+                    $log.log("Errors occured:", err);
+										$scope.$apply();
+                }
+		})
+		};
+		
+
 	
   $scope.fn_proprio_add = function () {
   	$scope.proprio_list = false;
