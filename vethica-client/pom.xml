@@ -19,7 +19,11 @@
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.servlet.jsp.jstl</artifactId>
-            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -36,7 +40,6 @@
             <plugin>
                 <groupId>com.sap.research</groupId>
                 <artifactId>nwcloud-maven-plugin</artifactId>
-                <version>1.0.4-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <id>after.install</id>
